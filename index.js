@@ -32,7 +32,7 @@ var msg = message.content.toUpperCase();
 	if(message.content.includes("http")){
 	if(message.member.hasPermission("MANAGE_MESSAGES")) return;
   	message.delete()
-  	message.channel.send(`${message.author} Link paylaşımı yasaktır!`)
+  	message.channel.send(`${message.author} Links are not allowed!`)
   }
 	
 	
@@ -46,7 +46,7 @@ var msg = message.content.toUpperCase();
 		
   
 	if(cmd === `${prefix}negro`){
-	message.channel.send("", {
+	message.channel.send("Who is he?", {
     file: "https://pbs.twimg.com/profile_images/704461285535182848/E_mW-3tV_400x400.jpg" // Or replace with FileOptions object
 });
 	}
@@ -92,7 +92,7 @@ var msg = message.content.toUpperCase();
 
 
 
-	 kUser.sendMessage(`**You are banned from ${message.author.id}. **For** ${kReason}`)
+	 kUser.sendMessage(`**You are kicked from ${message.author.id}. **For** ${kReason}`)
     return;
   }
 
@@ -113,13 +113,13 @@ var msg = message.content.toUpperCase();
     .addField("Zaman:", message.createdAt)
     .addField("Sebep:", bReason);
 
-				message.channel.send(`${bUser} **BANLANDI**`, {
+				message.channel.send(`${bUser} **BANNED**`, {
     file: "http://gifimage.net/wp-content/uploads/2017/07/ban-hammer-gif-5.gif" // Or replace with FileOptions object
 });
     message.guild.member(bUser).ban(bReason);
 
 
-		bUser.sendMessage(`${message.author.id} tarafından sunucudan atıldın. Sebep: ${bReason}`)
+		bUser.sendMessage(`**You are banned from ${message.author.id}. **For** ${kReason}`)
     return;
   }
 	
@@ -132,11 +132,11 @@ var msg = message.content.toUpperCase();
             messagesDeleted = messages.array().length; // number of messages deleted
 
             // Logging the number of messages deleted on both the channel and console.
-            message.channel.sendMessage("Başarılı! Şu kadar mesaj sildin: "+messagesDeleted);
+            message.channel.sendMessage("Success, Total messages are deleted: "+messagesDeleted);
             console.log('Deletion of messages successful. Total messages deleted: '+messagesDeleted)
           })
           .catch(err => {
-            console.log('Silinemedi');
+            console.log('Error: &del');
             console.log(err);
           });
 						 
@@ -145,23 +145,23 @@ var msg = message.content.toUpperCase();
 						 }
 	}
 
-  if(cmd === `${prefix}sikayet`){
+  if(cmd === `${prefix}report`){
 
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("Kullanıcı Bulunamıyor!");
+    if(!rUser) return message.channel.send("Cannot find user!");
     let rreason = args.join(" ").slice(22);
 
     let reportEmbed = new Discord.RichEmbed()
     .setDescription("Şikeyetler")
     .setColor(botconfig.pembe)
-    .addField("Şikeyet Edilen Kullanıcı:", `${rUser} ID: ${rUser.id}`)
-    .addField("Şikayet Eden Kullanıcı:", `${message.author} ID: ${message.author.id}`)
-    .addField("Kanal:", message.channel)
-    .addField("Zaman:", message.createdAt)
-    .addField("Sebep:", rreason);
+    .addField("Reported user:", `${rUser} ID: ${rUser.id}`)
+    .addField("Report by:", `${message.author} ID: ${message.author.id}`)
+    .addField("Channel:", message.channel)
+    .addField("Time:", message.createdAt)
+    .addField("Reason:", rreason);
 
     let reportschannel = message.guild.channels.find(`name`, "mnstrarmy-log");
-    if(!reportschannel) return message.channel.send("log Kanalı Bulunamıyor!");
+    if(!reportschannel) return message.channel.send("Cannot find orbit-log channel! Go create a one.");
 
 
     message.delete().catch(O_o=>{});
@@ -173,17 +173,17 @@ var msg = message.content.toUpperCase();
 
 
 
-  if(cmd === `${prefix}sunucu`){
+  if(cmd === `${prefix}server`){
 
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
     .setDescription("Sunucu Hakkında")
     .setColor(botconfig.pembe)
     .setThumbnail(sicon)
-    .addField("Sunucu Adı:", message.guild.name)
-    .addField("Açılış Tarihi:", message.guild.createdAt)
-    .addField("Katldığın Tarih:", message.member.joinedAt)
-    .addField("Toplam Kullanıcı:", message.guild.memberCount);
+    .addField("Server Name:", message.guild.name)
+    .addField("Open:", message.guild.createdAt)
+    .addField("You are joined at:", message.member.joinedAt)
+    .addField("Total users:", message.guild.memberCount);
 
     return message.channel.send(serverembed);
   }
@@ -197,10 +197,10 @@ var msg = message.content.toUpperCase();
     .setDescription("Bot Hakkında")
     .setColor(botconfig.pembe)
     .setThumbnail(bicon)
-    .addField("Bot İsmi:", bot.user.username)
-    .addField("Yapılış Tarihi:", bot.user.createdAt)
-    .addField("Geliştirici Ve Kullanıcı Adı: ", "NoobZombie, NoobZombie#5514")
-	.addField("Durum:", "BETA IN-DEV")
+    .addField("Bot name:", bot.user.username)
+    .addField("Created at:", bot.user.createdAt)
+    .addField("Dev: ", "NoobZombie, NoobZombie#5514")
+	.addField("Status:", "BETA IN-DEV")
     return message.channel.send(botembed);
   }
 
