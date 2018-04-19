@@ -105,7 +105,7 @@ var msg = message.content.toUpperCase();
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Bu kullanıcı atılamaz!");
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("MNSTRArmy-Ban")
+    .setDescription("Orbit-Ban")
     .setColor(botconfig.pembe)
     .addField("Yasaklanan Kullanıcı:", `${bUser} ID ${bUser.id}`)
     .addField("Yasaklayan Kullanıcı:", `<@${message.author.id}> ID ${message.author.id}`)
@@ -152,7 +152,7 @@ var msg = message.content.toUpperCase();
     let rreason = args.join(" ").slice(22);
 
     let reportEmbed = new Discord.RichEmbed()
-    .setDescription("Şikeyetler")
+    .setDescription("Reports")
     .setColor(botconfig.pembe)
     .addField("Reported user:", `${rUser} ID: ${rUser.id}`)
     .addField("Report by:", `${message.author} ID: ${message.author.id}`)
@@ -177,7 +177,7 @@ var msg = message.content.toUpperCase();
 
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
-    .setDescription("Sunucu Hakkında")
+    .setDescription("Server")
     .setColor(botconfig.pembe)
     .setThumbnail(sicon)
     .addField("Server Name:", message.guild.name)
@@ -194,7 +194,7 @@ var msg = message.content.toUpperCase();
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .setDescription("Bot Hakkında")
+    .setDescription("Bot")
     .setColor(botconfig.pembe)
     .setThumbnail(bicon)
     .addField("Bot name:", bot.user.username)
