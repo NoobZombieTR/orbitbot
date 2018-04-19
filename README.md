@@ -1,2 +1,1 @@
-# orbitbot
-kk
+# It's just a project.
