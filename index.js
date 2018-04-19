@@ -72,13 +72,13 @@ var msg = message.content.toUpperCase();
     return;
   }
 	
-	if(cmd === `${prefix}derinyardim`){
+	if(cmd === `${prefix}hfma`){
 
     let helpEmbed1 = new Discord.RichEmbed()
-    .setTitle("MNSTRArmy Bot Derin Yardım Sayfası")
+    .setTitle("Orbit Bot HFMA Page")
     .setColor(botconfig.pembe)
-    .addField("Derinleş", "[+]Bir kullanıcıyı banlamak için rolünde 'Kullanıcıları yasakla' seçeneği açık olması gerek.\n[+]Bir kullanıcıyı atmak için rolünde 'Kullanıcıları At' seçeneği açık olması gerek.\n[+]Kanallara link göndermek için rolünde 'Mesajları Düzenle' seçeneğinin açık olması gerek\n[+]&del komutunda **YAZILAN KANALDAKİ BÜTÜN MESAJLAR** silinir, bu nedenle yanına bir rakam veya bir @kullanıcıadı girmene gerek yok\n[+]Eğer acil bir yardıma ihtiyacın varsa bana mesaj göndermeyi lütfen unutma: NoobZombie#5514")
-		.addField("Davet Linki", "[Tıkla](https://discordapp.com/api/oauth2/authorize?client_id=434000273049124904&scope=bot&permissions=0)")
+    .addField("", "[+]For ban people, you need to have 'Ban members' premission.\n[+]For kick people, you need to have 'Kick members' premission.\n[+]For sending links, you need to have 'Manage messages' premission.\n[+]For &del command, deletes all messages from channel and you need to have 'Manage messages' premission.\n[+]**Report me bugs**: NoobZombie#5514")
+		
     message.channel.send(helpEmbed1);
     return;
   }
@@ -90,18 +90,9 @@ var msg = message.content.toUpperCase();
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Bunu yapmak için iznin yok!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Bu kullanıcı atılamıyor!");
 
-    let kickEmbed = new Discord.RichEmbed()
-    .setDescription("MNSTRArmy-Kick")
-    .setColor(botconfig.pembe)
-    .addField("Atılan kullanıcı:", `${kUser} ID ${kUser.id}`)
-    .addField("Atan Kullanıcı:", `<@${message.author.id}> ID ${message.author.id}`)
-    .addField("Atıldığı kanal:", message.channel)
-    .addField("Zaman:", message.createdAt)
-    .addField("Sebep:", kReason);
 
 
-    message.channel.send(kickEmbed);
-	 kUser.sendMessage(`${message.author.id} tarafından sunucudan atıldın. Sebep: ${kReason}`)
+	 kUser.sendMessage(`**You are banned from ${message.author.id}. **For** ${kReason}`)
     return;
   }
 
