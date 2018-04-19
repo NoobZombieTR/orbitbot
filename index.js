@@ -160,7 +160,7 @@ var msg = message.content.toUpperCase();
     .addField("Time:", message.createdAt)
     .addField("Reason:", rreason);
 
-    let reportschannel = message.guild.channels.find(`name`, "mnstrarmy-log");
+    let reportschannel = message.guild.channels.find(`name`, "orbit-log");
     if(!reportschannel) return message.channel.send("Cannot find orbit-log channel! Go create a one.");
 
 
